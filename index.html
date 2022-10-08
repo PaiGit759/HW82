@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HW82</title>
+    <style type="text/css">
+        body {
+            background-color: rgb(150, 150, 202);
+        }
+
+        .exsample {
+            top: 5%;
+        }
+
+        .exsample1 {
+            top: 28%;
+        }
+
+        .exsample2 {
+            top: 16%;
+        }
+
+        .exsample1 {
+            position: relative;
+            left: 27%;
+            top: 90px;
+            width: 25%;
+            height: 205px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            font-size: x-large;
+            margin-top: 5px;
+            text-align: justify;
+            background: lightgray;
+            border: 1px solid greenyellow;
+            border-radius: 3%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="myForm" class="exsample1">
+        <label for="street">Street:</label><br>
+        <input type="text" id="street" name="street" value="Street"><br>
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" value="City"><br>
+        <label for="country">Country:</label><br>
+        <input type="text" id="country" name="country" value="Country">
+        <p id="pCheck" style="font-size:16px ;"></p>
+        <div>
+            <button id="btn1" onclick="onClicBtn1()">Send</button>
+        </div>
+    </div>
+
+    <script>
+
+        function checkValue(id, value) {
+            var checkRight = true;
+
+            if (document.getElementById(id).value == 0 || isFinite(document.getElementById(id).value)
+                || document.getElementById(id).value.length >= 20) {
+                document.getElementById(id).style.borderColor = "red";
+                return false;
+            }
+            else {
+                document.getElementById(id).style.borderColor = "lightgreen";
+                return true;
+            }
+        }
+
+        function onClicBtn1() {
+            let myForm = document.getElementById('myForm');
+            let inputElements = myForm.querySelectorAll('input');
+            document.getElementById('pCheck').innerHTML = "Form data submitted successfully";
+            document.getElementById('pCheck').style.color = "green";
+            for (i = 0; i < inputElements.length; i++) {
+                if (!checkValue(inputElements[i].id, inputElements[i].value)) {
+                    document.getElementById('pCheck').innerHTML = "Please check the value " + inputElements[i].id;
+                    document.getElementById('pCheck').style.color = "red";
+                    break;
+                };
+            }
+        }       
+    </script>
+
+</body>
+
+</html>
